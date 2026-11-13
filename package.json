@@ -1,0 +1,17 @@
+{
+  "name": "shulian-xiaoniu-public",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "lint": "node --check src/app.mjs && node --check src/public-api.mjs",
+    "test": "node --test src/*.test.mjs"
+  },
+  "dependencies": {
+    "markdown-it": "15.0.3"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

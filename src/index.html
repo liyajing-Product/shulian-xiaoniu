@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://dashscope.aliyuncs.com; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light"><title>数链小牛 · 知识工作台</title>
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./notification.css">
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="#playground"><span class="brand-mark"><svg viewBox="0 0 200 200" aria-hidden="true"><path d="M99 20C85 20 76 30 76 44C76 61 60 78 42 78C30 78 20 88 20 100C20 112 30 122 42 122C60 122 76 139 76 156C76 170 86 180 99 180C112 180 122 169 122 156C122 144 112 135 100 133C77 129 64 118 64 100C64 82 77 71 100 67C112 65 122 56 122 44C122 31 112 20 99 20Z"/><path d="M100 78C111 78 119 85 123 93C127 98 133 98 137 93C141 85 149 78 160 78A22 22 0 1 1 160 122C149 122 141 115 137 107C133 102 127 102 123 107C119 115 111 122 100 122A22 22 0 1 1 100 78Z"/></svg></span><span>数链小牛</span></a>
+  <nav aria-label="主导航" id="navigation">
+    <button class="nav-item active" data-view="playground"><i data-icon="sparkle"></i>Playground</button>
+    <button class="nav-item" data-action="new-chat"><i data-icon="chat"></i>开始新对话</button>
+    
+    
+    <button class="nav-item" data-view="search"><i data-icon="FindOne"></i>知识检索</button>
+    <button class="nav-item" data-view="chat"><i data-icon="ThinkingProblem"></i>知识问答</button>
+    
+  </nav>
+  
+  <div class="sidebar-bottom"><button id="import-docs" class="key-button sidebar-utility"><i data-icon="BookOpen"></i>导入体验资料</button><button id="clear-docs" class="key-button sidebar-utility"><i data-icon="close"></i>清除导入资料</button><input id="docs-file" type="file" accept=".txt,.md,text/plain,text/markdown" hidden>
+  <button id="key-button" class="key-button sidebar-utility"><i data-icon="key"></i><span id="key-entry-label">API Key配置</span><span id="key-status-dot" class="key-status"></span><i data-icon="arrow-right"></i></button>
+  </div>
+</aside>
+<main>
+  <header class="workspace-header"><button id="menu-button" class="icon-button mobile-menu" aria-label="展开导航" aria-expanded="false"><i data-icon="menu"></i></button><div class="breadcrumb">工作空间 <span>/</span> <strong id="page-label">Playground</strong></div><button class="workspace-pill" id="workspace-info"><span class="workspace-icon">S</span> 公开体验 <i data-icon="chevron"></i></button></header>
+  <section id="playground-panel" class="playground">
+    <div class="studio-content">
+      <div class="hero" id="hero"><h1 aria-label="让每一次提问，都有据可循"><svg class="title-line title-line-1" viewBox="0 0 724 140" aria-hidden="true"><text y="105"><tspan x="0" style="--letter-animation:title-letter-0">让</tspan><tspan x="100" style="--letter-animation:title-letter-1">每</tspan><tspan x="200" style="--letter-animation:title-letter-2">一</tspan><tspan x="300" style="--letter-animation:title-letter-3">次</tspan><tspan x="400" style="--letter-animation:title-letter-4">提</tspan><tspan x="500" style="--letter-animation:title-letter-5">问</tspan><tspan x="600" style="--letter-animation:title-letter-6">，</tspan></text><rect class="typing-cursor" x="106" y="24" width="10" height="88" style="--cursor-animation:title-cursor-0"/><rect class="typing-cursor" x="206" y="24" width="10" height="88" style="--cursor-animation:title-cursor-1"/><rect class="typing-cursor" x="306" y="24" width="10" height="88" style="--cursor-animation:title-cursor-2"/><rect class="typing-cursor" x="406" y="24" width="10" height="88" style="--cursor-animation:title-cursor-3"/><rect class="typing-cursor" x="506" y="24" width="10" height="88" style="--cursor-animation:title-cursor-4"/><rect class="typing-cursor" x="606" y="24" width="10" height="88" style="--cursor-animation:title-cursor-5"/><rect class="typing-cursor" x="706" y="24" width="10" height="88" style="--cursor-animation:title-cursor-6"/></svg><svg class="title-line title-line-2" viewBox="0 0 524 140" aria-hidden="true"><text y="105"><tspan x="0" style="--letter-animation:title-letter-7">都</tspan><tspan x="100" style="--letter-animation:title-letter-8">有</tspan><tspan x="200" style="--letter-animation:title-letter-9">据</tspan><tspan x="300" style="--letter-animation:title-letter-10">可</tspan><tspan x="400" style="--letter-animation:title-letter-11">循</tspan></text><rect class="typing-cursor" x="106" y="24" width="10" height="88" style="--cursor-animation:title-cursor-7"/><rect class="typing-cursor" x="206" y="24" width="10" height="88" style="--cursor-animation:title-cursor-8"/><rect class="typing-cursor" x="306" y="24" width="10" height="88" style="--cursor-animation:title-cursor-9"/><rect class="typing-cursor" x="406" y="24" width="10" height="88" style="--cursor-animation:title-cursor-10"/><rect class="typing-cursor" x="506" y="24" width="10" height="88" style="--cursor-animation:title-cursor-11"/></svg></h1></div>
+      <div class="mode-switch" role="group" aria-label="交互模式"><button id="mode-chat" class="selected"><i data-icon="messages"></i>知识问答</button><button id="mode-search"><i data-icon="search"></i>知识检索</button></div>
+      <div class="welcome-art" id="welcome-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-symbol"><i data-icon="sparkle"></i></div><span class="art-node node-one"><i data-icon="search"></i></span><span class="art-node node-two"><i data-icon="messages"></i></span></div>
+      <div id="messages" class="messages" aria-live="polite" aria-relevant="additions text"></div>
+      <div class="composer-zone"><div class="suggestions" id="suggestions"><button data-question="这个体验版如何保护 API Key？"><i data-icon="sparkle"></i>了解 Key 使用方式</button><button data-question="如何导入自己的体验资料？"><i data-icon="sparkle"></i>导入资料怎么用？</button><button data-question="这个公开体验版有哪些功能？"><i data-icon="sparkle"></i>了解体验版功能</button></div>
+      <form id="ask-form" class="composer"><textarea id="question" rows="3" maxlength="2000" placeholder="输入你的业务问题，让知识为你解答…" aria-label="业务问题"></textarea><div class="composer-bottom"><div class="composer-options"><button type="button" id="model-button" class="model-button" disabled aria-label="当前模型：qwen-plus"><img class="model-provider-logo" src="./qwen-logo.png" alt="通义千问" width="18" height="18"><span id="model-name">qwen-plus</span></button></div><button type="submit" id="send-button" class="send-button" aria-label="发送问题"><i data-icon="arrow-up"></i></button><button type="button" id="stop-button" class="send-button stop hidden" aria-label="停止生成"><span></span></button></div></form>
+      </div>
+    </div>
+
+  </section>
+  <section id="settings-panel" class="detail-panel hidden"></section>
+</main>
+<dialog id="key-dialog" aria-labelledby="key-title"><form id="key-form"><div class="dialog-header"><div class="dialog-icon"><i data-icon="key"></i></div><button type="button" id="close-key" class="icon-button" aria-label="关闭 API Key 设置"><i data-icon="close"></i></button></div><h2 id="key-title">配置我的 API Key</h2><p class="dialog-intro" id="key-intro">使用你自己的百炼 Key，问答与检索费用计入你的百炼账号。</p><label for="api-key">阿里云百炼 API Key</label><div class="secret-field"><input id="api-key" type="password" autocomplete="new-password" spellcheck="false" placeholder="输入你的百炼 API Key" minlength="8" maxlength="512"><button type="button" id="toggle-key" class="icon-button" aria-label="显示输入的密钥"><i data-icon="eye"></i></button></div><p id="key-config-state" class="field-hint">正在读取配置状态…</p><a class="key-help" href="https://help.aliyun.com/zh/model-studio/get-api-key" target="_blank" rel="noopener noreferrer">获取百炼 API Key</a><div class="key-note"><i data-icon="shield"></i><p id="key-privacy">Key仅保存在当前页面内存，刷新后清除；不写入GitHub或本站服务器。请求直接发送阿里云百炼，调用费用计入你的账号。导入资料的相关片段会随问题发送百炼，请勿使用公司内部或敏感资料。</p></div><div id="key-error" class="inline-error" role="alert"></div><div class="dialog-actions"><button type="button" id="clear-key" class="secondary-button" disabled>清除我的 Key</button><button type="button" id="cancel-key" class="secondary-button">取消</button><button class="primary-button" id="save-key" type="submit">验证并保存</button></div></form></dialog>
+
+<script type="module" src="./app.mjs"></script>
+</body></html>
